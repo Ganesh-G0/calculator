@@ -1,0 +1,251 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap");
+:root {
+  --mainBg: hsl(222, 26%, 31%);
+  --whiteText: hsl(0, 0%, 100%);
+  
+  --mainText: hsl(0, 0%, 100%);
+  --keyPadText: hsl(221, 14%, 31%);
+
+  --toggleBg: hsl(223, 31%, 20%);
+  --screenBg: hsl(224, 36%, 15%);
+  --keypad: hsl(225, 21%, 49%);
+  --keypadShadow: hsl(224, 28%, 35%);
+  --equalKeysBg: hsl(6, 63%, 50%);
+  --equalKeysShadow: hsl(6, 70%, 34%);
+  --keysBg: hsl(30, 25%, 89%);
+  --keysShadow: hsl(28, 16%, 65%);
+
+  --resetText: hsl(0, 0%, 100%);
+  --equalText: hsl(0, 0%, 100%);  
+}
+:root[data-theme="light"] { 
+  --mainBg: hsl(0, 0%, 90%);
+  --whiteText: hsl(0, 0%, 100%);
+  
+  --resetText: hsl(0, 0%, 100%);
+  --equalText: hsl(0, 0%, 100%);
+
+  --mainText: hsl(60, 10%, 19%);
+  --keyPadText: hsl(198, 20%, 13%);
+  
+  --toggleBg: hsl(0, 5%, 81%);
+  --screenBg: hsl(0, 0%, 93%);
+
+  --keypad: hsl(185, 42%, 37%);
+  --keypadShadow: hsl(185, 58%, 25%);
+  --equalKeysBg: hsl(25, 98%, 40%);
+  --equalKeysShadow: hsl(25, 99%, 27%);
+  --keysBg: hsl(45, 7%, 89%);
+  --keysShadow: hsl(35, 11%, 61%);
+}
+:root[data-theme="dark"] { 
+/* :root[data-theme="dark"] { */
+  --mainBg: hsl(268, 75%, 9%);
+  --mainText: hsl(52, 100%, 62%);
+  --whiteText: hsl(0, 0%, 100%);
+  
+  
+  --screenBg: hsl(268, 71%, 12%);
+  --toggleBg: hsl(268, 71%, 12%);
+  --keypad: hsl(281, 89%, 26%);
+  --keypadShadow: hsl(285, 91%, 52%);
+  --equalKeysBg: hsl(176, 100%, 44%);
+  --equalKeysShadow: hsl(177, 92%, 70%);
+  --keysBg: hsl(268, 47%, 21%);
+  --keysShadow: hsl(290, 70%, 36%);
+  
+  
+  --equalText: hsl(198, 20%, 13%);
+
+  --keyPadText: hsl(52, 100%, 62%);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+  font-family: "League Spartan", sans-serif;
+}
+body {
+  background: var(--mainBg);
+  color: var(--mainText);
+  font-weight: 700;
+  font-optical-sizing: auto;
+  font-family: "League Spartan", sans-serif;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+main {
+  margin: 2rem;
+  width: 80%;
+  max-width: 40rem;
+}
+header {
+  color: var(--mainText);
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin: 0rem auto 3rem;
+}
+.theme {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.theme > p {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.themeChanger {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+.themeChanger > ul {
+  gap: 1rem;
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+}
+#custom-toggle {
+  appearance: none;
+  height: 2rem;
+  width: 6rem;
+  background-color: var(--toggleBg);
+  border-radius: 2.5rem;
+  padding: 0 2px;
+  margin: 0;
+  cursor: pointer;
+}
+#custom-toggle.toggle-default::-webkit-slider-thumb {
+  background-color: var(--equalKeysBg);
+}
+#custom-toggle.toggle-light::-webkit-slider-thumb {
+  background-color: var(--equalKeysBg);
+}
+#custom-toggle.toggle-dark::-webkit-slider-thumb {
+  background-color: var(--equalKeysBg);
+}
+#custom-toggle::-webkit-slider-thumb {
+  appearance: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 2.5rem;
+}
+#custom-toggle:focus {
+  outline: none;
+}
+.screen {
+  min-height: 10dvh;
+  padding: 2rem;
+  font-size: 1.8rem;
+  text-align: right;
+  border-radius: 0.5rem;
+  color: var(--mainText);
+  background-color: var(--screenBg);
+}
+#input {
+  color: gray;
+  margin-bottom: 2rem;
+}
+.keypad {
+  min-width: 20rem;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  background-color: var(--toggleBg);
+  color: var(--keyPadText);
+  border-radius: 0.6rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "seven eight nine delete"
+    "four five six addition"
+    "one two three subtraction"
+    "point zer0 divide multiplication"
+    "reset reset equal equal";
+}
+#one { grid-area: one; }
+#two { grid-area: two;}
+#three {   grid-area: three;
+}
+#four {
+  grid-area: four;
+}
+#five {
+  grid-area: five;
+}
+#six {
+  grid-area: six;
+}
+#seven {
+  grid-area: seven;
+}
+#eight {
+  grid-area: eight;
+}
+#nine {
+  grid-area: nine;
+}
+#point {
+  grid-area: point;
+}
+#zero {
+  grid-area: zer0;
+}
+#divide {
+  grid-area: divide;
+}
+#multiply {
+  grid-area: multiplication;
+}
+#subtraction {
+  grid-area: subtraction;
+}
+#addition {
+  grid-area: addition;
+}
+#reset {
+  grid-area: reset;
+}
+#delete {
+  grid-area: delete;
+}
+#equal {
+  grid-area: equal;
+}
+button {
+  font-family: "League Spartan", sans-serif;
+  border: 0;
+  font-weight: 700;
+  font-size: 2.4rem;
+  padding: 1rem 0.2rem;
+  border-radius: 0.4rem;
+  color: var(--keyPadText);
+  background-color: var(--keysBg);
+  box-shadow: 0.01px 0.3rem var(--keysShadow);
+}
+button:hover {
+  cursor: pointer;
+}
+#reset,
+#delete {
+  border: 0;
+  font-size: 1.5rem;
+  color: var(--resetText);
+  text-transform: uppercase;
+  background-color: var(--keypad);
+  box-shadow: 0.01px 0.3rem var(--keypadShadow);
+}
+#equal {
+  color: var(--equalText);
+  background-color: var(--equalKeysBg);
+  box-shadow: 0.01px 0.3rem var(--equalKeysShadow);
+}

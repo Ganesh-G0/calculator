@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" id="html" data-theme="default">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">  
+  <title>Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script defer src="index.js"></script>
+</head>
+<!-- <body id="html" data-theme="default"> -->
+<body>
+  <main>
+    <header>
+      <h1>calc</h1>
+      <div class="theme">
+        <p>theme</p>
+        <div class="themeChanger">
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+          </ul>
+          <input type="range" name="position" 
+          onchange="switchTheme(value)" 
+          min="1" step="1" max="3" id="custom-toggle" 
+          class="toggle-default" value="1">  
+        </div>
+      </div>
+    </header>
+    <div class="screen">
+      <p id="input"></p>
+      <h1 id="output">399,981</h1>
+    </div>
+    <div class="keypad">
+      <button id="one">1</button>
+      <button id="two">2</button>
+      <button id="three">3</button>
+      <button id="four">4</button>
+      <button id="five">5</button>
+      <button id="six">6</button>
+      <button id="seven">7</button>
+      <button id="eight">8</button>
+      <button id="nine">9</button>
+      <button id="point">.</button>
+      <button id="zero">0</button>
+      <button id="divide">/</button>
+      <button id="multiply">x</button>
+      <button id="subtraction">-</button>
+      <button id="addition">+</button>
+      <button id="delete" class="delete">del</button>
+      <button id="reset" class="reset">reset</button>
+      <button id="equal">=</button>
+    </div>
+
+  </main>  
+</body>
+</html>

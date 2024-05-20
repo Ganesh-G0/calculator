@@ -1,3 +1,52 @@
+let operationStack = "";
+const display = $("#output");
+
+const enterInput = (value) => {
+  if (operationStack.toString.length <= 14) {
+    console.log("pressed", value);
+    if (operationStack == "Syntax Error" || operationStack == "Infinity") {
+      operationStack = "";
+    }
+    operationStack = operationStack + value.toString();
+    // $("#input").text(operationStack);
+    updateDisplay();
+  }
+  // console.log(operationStack.toString.length);
+  // console.log(operationStack);
+};
+const updateDisplay = () => {
+  // $("#output").text("I'm Working...");
+  display.text(operationStack);
+};
+const clearDisplay = () => { 
+  operationStack = " ";
+  updateDisplay();
+  // console.log("Clear Display");
+};
+const deleteValue = () => {
+  if (operationStack == "Syntax Error" || operationStack == "Infinity") {
+    operationStack = "";
+  }
+  else if (operationStack !== "") {
+    operationStack = operationStack.slice(0, operationStack.length - 1);
+    updateDisplay();
+  }
+};
+const solve = () => {
+  try {
+    operationStack = String(eval(operationStack));
+    // console.log((operationStack).length);
+    if (operationStack.length > 5) {
+      operationStack = operationStack.slice(0, 4)      
+    }
+    updateDisplay();
+  } catch (error) {
+    console.log(error);
+    operationStack = "Invalid Input";
+    updateDisplay();
+  }
+};
+
 function switchTheme(value) {
   if (value == 1) {
     $("#custom-toggle").removeClass("toggle-light", 'toggle-dark').addClass("toggle-default");
@@ -10,45 +59,3 @@ function switchTheme(value) {
     $("#html").attr("data-theme", 'dark');
   }
 };
-console.log($('#html').attr('data-theme'));
-
-// let result = '24-4+3*2/6';
-let result = '';
-let symbolsArr = [];
-let numbersArr = [];
-let input = $('#input');
-let output = $('#output');
-
-$("#reset").click(() => { output.text('0'); });
-$("#delete").click(() => { numbersArr.pop(); });
-
-$('button').click((event) => {
-  let currentKey = event.target.id;
-  let currentValue = event.target.innerText;
-  
-  if (currentKey != 'reset' || currentKey != 'delete' || currentKey != 'equal') {
-    if (/\d/.test(currentValue)) {
-      result += currentValue;
-      numbersArr.push(currentValue);
-      input.text(result);
-    } else {
-      result += currentValue;
-      input.text(result);
-      symbolsArr.push(currentValue);
-    }
-    if (symbolsArr.length - 1 == '+') {
-      let addition = add(numbersArr[numbersArr.length -2], numbersArr[numbersArr.length - 1]);
-      output.text(addition);
-      console.log(numbersArr[numbersArr.length -2], numbersArr[numbersArr.length -1])
-    }
-  }
-});
-
-$("#equal").click(() => {
-  if (symbolsArr[symbolsArr.length - 1] == '+') {  
-    result = add(parseInt(numbersArr[numbersArr.length - 2], parseInt(numbersArr[numbersArr.length - 1])))
-    output.text(result);
-  }
-});
-
-function add(num1, num2) { return (num1 + num2); }

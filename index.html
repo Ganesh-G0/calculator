@@ -22,7 +22,8 @@
             <li>2</li>
             <li>3</li>
           </ul>
-          <input type="range" name="position" 
+          <label style="display: none;" for="themePosition"></label>
+          <input type="range" name="themePosition" 
           onchange="switchTheme(value)" 
           min="1" step="1" max="3" id="custom-toggle" 
           class="toggle-default" value="1">  
@@ -30,30 +31,29 @@
       </div>
     </header>
     <div class="screen">
-      <p id="input"></p>
-      <h1 id="output">399,981</h1>
+      <!-- <p id="input"></p> -->
+      <h1 id="output">0</h1>
     </div>
     <div class="keypad">
-      <button id="one">1</button>
-      <button id="two">2</button>
-      <button id="three">3</button>
-      <button id="four">4</button>
-      <button id="five">5</button>
-      <button id="six">6</button>
-      <button id="seven">7</button>
-      <button id="eight">8</button>
-      <button id="nine">9</button>
-      <button id="point">.</button>
-      <button id="zero">0</button>
-      <button id="divide">/</button>
-      <button id="multiply">x</button>
-      <button id="subtraction">-</button>
-      <button id="addition">+</button>
-      <button id="delete" class="delete">del</button>
-      <button id="reset" class="reset">reset</button>
-      <button id="equal">=</button>
+      <button onclick="enterInput(1)">1</button>
+      <button onclick="enterInput(2)">2</button>
+      <button onclick="enterInput(3)">3</button>
+      <button onclick="enterInput(4)">4</button>
+      <button onclick="enterInput(5)">5</button>
+      <button onclick="enterInput(6)">6</button>
+      <button onclick="enterInput(7)">7</button>
+      <button onclick="enterInput(8)">8</button>
+      <button onclick="enterInput(9)">9</button>
+      <button onclick="enterInput('.')">.</button>
+      <button onclick="enterInput(0)">0</button>
+      <button onclick="enterInput('/')">/</button>
+      <button onclick="enterInput('*')">x</button>
+      <button onclick="enterInput('-')">-</button>
+      <button onclick="enterInput('+')">+</button>
+      <button onclick="deleteValue()" id="delete">del</button>
+      <button onclick="clearDisplay()" id="reset">reset</button>
+      <button onclick="solve()" id="equal">=</button>
     </div>
-
   </main>  
 </body>
 </html>

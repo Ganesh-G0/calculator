@@ -19,7 +19,7 @@ const updateDisplay = () => {
   display.text(operationStack);
 };
 const clearDisplay = () => { 
-  operationStack = " ";
+  operationStack = "0";
   updateDisplay();
   // console.log("Clear Display");
 };
@@ -27,8 +27,12 @@ const deleteValue = () => {
   if (operationStack == "Syntax Error" || operationStack == "Infinity") {
     operationStack = "";
   }
-  else if (operationStack !== "") {
+  else if (operationStack.length > 1) {
     operationStack = operationStack.slice(0, operationStack.length - 1);
+    updateDisplay();
+  }
+  else if (operationStack.length == 1) {
+    operationStack = "0";
     updateDisplay();
   }
 };

@@ -81,9 +81,9 @@ body {
   justify-content: center;
 }
 main {
-  margin: 2rem;
-  width: 80%;
-  max-width: 40rem;
+  margin: 1rem;
+  /* width: 100%; */
+  /* max-width: 40rem; */
 }
 header {
   color: var(--mainText);
@@ -92,6 +92,9 @@ header {
   justify-content: space-between;
   margin: 0rem auto 3rem;
 }
+header h1 {
+  font-size: 3rem;
+}
 .theme {
   display: flex;
   align-items: end;
@@ -99,13 +102,14 @@ header {
   gap: 1.5rem;
 }
 .theme > p {
-  text-transform: uppercase;
+  font-size: 1.5rem;
   font-weight: 500;
+  text-transform: uppercase;
 }
 .themeChanger {
+  gap: 0.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
   justify-content: space-between;
 }
 .themeChanger > ul {
@@ -116,13 +120,13 @@ header {
 }
 #custom-toggle {
   appearance: none;
-  height: 2rem;
-  width: 6rem;
-  background-color: var(--toggleBg);
-  border-radius: 2.5rem;
-  padding: 0 2px;
   margin: 0;
+  width: 6rem;
+  height: 2rem;
   cursor: pointer;
+  padding: 0 2px;
+  border-radius: 2.5rem;
+  background-color: var(--toggleBg);
 }
 #custom-toggle.toggle-default::-webkit-slider-thumb {
   background-color: var(--equalKeysBg);
@@ -134,17 +138,17 @@ header {
   background-color: var(--equalKeysBg);
 }
 #custom-toggle::-webkit-slider-thumb {
-  appearance: none;
   width: 1.6rem;
   height: 1.6rem;
+  appearance: none;
   border-radius: 2.5rem;
 }
 #custom-toggle:focus {
   outline: none;
 }
 .screen {
-  min-height: 10dvh;
   padding: 2rem;
+  min-height: 5dvh;
   font-size: 1.8rem;
   text-align: right;
   border-radius: 0.5rem;
@@ -156,15 +160,16 @@ header {
   margin-bottom: 2rem;
 }
 .keypad {
-  min-width: 20rem;
-  padding: 1.5rem;
-  margin: 2rem auto;
-  background-color: var(--toggleBg);
-  color: var(--keyPadText);
-  border-radius: 0.6rem;
   display: grid;
-  gap: 1rem;
+  /* min-width: 20rem; */
+  padding: 2rem;
+  margin: 2rem auto;
+  gap: 1rem 1.1rem;
+  border-radius: 0.6rem;
+  color: var(--keyPadText);
+  background-color: var(--toggleBg);
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   grid-template-areas:
     "seven eight nine delete"
     "four five six addition"
@@ -172,73 +177,40 @@ header {
     "point zer0 divide multiplication"
     "reset reset equal equal";
 }
-#one { grid-area: one; }
-#two { grid-area: two;}
-#three {   grid-area: three;
-}
-#four {
-  grid-area: four;
-}
-#five {
-  grid-area: five;
-}
-#six {
-  grid-area: six;
-}
-#seven {
-  grid-area: seven;
-}
-#eight {
-  grid-area: eight;
-}
-#nine {
-  grid-area: nine;
-}
-#point {
-  grid-area: point;
-}
-#zero {
-  grid-area: zer0;
-}
-#divide {
-  grid-area: divide;
-}
-#multiply {
-  grid-area: multiplication;
-}
-#subtraction {
-  grid-area: subtraction;
-}
-#addition {
-  grid-area: addition;
-}
-#reset {
-  grid-area: reset;
-}
-#delete {
-  grid-area: delete;
-}
-#equal {
-  grid-area: equal;
-}
 button {
-  font-family: "League Spartan", sans-serif;
   border: 0;
+  font-size: 2.5rem;
+  cursor: pointer;
   font-weight: 700;
-  font-size: 2.4rem;
-  padding: 1rem 0.2rem;
-  border-radius: 0.4rem;
+  padding: 1rem 1.2rem;
+  border-radius: .4rem;
   color: var(--keyPadText);
   background-color: var(--keysBg);
+  font-family: "League Spartan", sans-serif;
   box-shadow: 0.01px 0.3rem var(--keysShadow);
 }
-button:hover {
-  cursor: pointer;
-}
+button:nth-child(1) { grid-area: one; }
+button:nth-child(2) { grid-area: two;}
+button:nth-child(3) { grid-area: three; }
+button:nth-child(4) { grid-area: four; }
+button:nth-child(5) { grid-area: five; }
+button:nth-child(6) { grid-area: six; }
+button:nth-child(7) { grid-area: seven; }
+button:nth-child(8) { grid-area: eight; }
+button:nth-child(9) { grid-area: nine; }
+button:nth-child(10) { grid-area: point; }
+button:nth-child(11) { grid-area: zer0; }
+button:nth-child(12) { grid-area: divide; }
+button:nth-child(13) { grid-area: multiplication; }
+button:nth-child(14) { grid-area: subtraction; }
+button:nth-child(15) { grid-area: addition; }
+button:nth-child(16) { grid-area: delete; }
+button:nth-child(17) { grid-area: reset; }
+button:nth-child(18) { grid-area: equal;}
 #reset,
 #delete {
   border: 0;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: var(--resetText);
   text-transform: uppercase;
   background-color: var(--keypad);
@@ -248,4 +220,30 @@ button:hover {
   color: var(--equalText);
   background-color: var(--equalKeysBg);
   box-shadow: 0.01px 0.3rem var(--equalKeysShadow);
+}
+@media screen and (min-width:1024px) {
+  header h1 {
+    font-size: 4rem;
+  }
+  .theme p {
+    font-size: 2rem;
+  }
+  .themeChanger li {
+    font-size: 2rem;
+  }
+  .keypad {
+    gap: 2rem;
+    padding: 4rem;
+    text-align: center;
+    grid-template-rows: repeat(5, .5fr);
+    grid-template-columns: repeat(4, 1fr);
+  }
+  button {
+    font-size: 4rem;
+    padding: 1rem 2.5rem;
+    border-radius: 1.2rem;
+  }  
+  #reset, #delete {
+    font-size: 3rem;
+  }
 }
